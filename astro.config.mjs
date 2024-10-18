@@ -3,7 +3,6 @@ import starlight from "@astrojs/starlight";
 // import starlightLinksValidator from "starlight-links-validator";
 //import starlightUtils from "@lorenzo_lewis/starlight-utils";
 // import markdoc from '@astrojs/markdoc';
-import remarkExternalLinks from "remark-external-links";
 import starlightNutshell from "starlight-nutshell";
 import rehypeExternalLinks from "rehype-external-links";
 import compress from "astro-compress";
@@ -50,17 +49,13 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [
-      [
-        remarkExternalLinks,
-        { target: "_blank", rel: ["noopener", "noreferrer"] },
-      ],
-    ],
     rehypePlugins: [
       [
         rehypeExternalLinks,
         {
           content: { type: "text", value: " 🡕" },
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
         },
       ],
     ],
